@@ -13,7 +13,7 @@
           @if ($LoggedUserInfo['admin_avatar'] == "")
           <img class="user-image img-circle elevation-2 " src="{{asset('admin_avatar/admin_avatar.jpg')}}" alt="{{$LoggedUserInfo['second_name']}} {{$LoggedUserInfo['first_name']}}">
           @else
-          <img class="user-image img-circle elevation-2 " src="{{asset('admin_avatar/'.$LoggedUserInfo['admin_avatar'])}}" alt="{{$LoggedUserInfo['second_name']}} {{$LoggedUserInfo['first_name']}}" style="width:35px; height:35px;"> 
+          <img class="user-image img-circle  " src="{{asset('admin_avatar/'.$LoggedUserInfo['admin_avatar'])}}" alt="{{$LoggedUserInfo['second_name']}} {{$LoggedUserInfo['first_name']}}" style="width:40px; height:40px;"> 
           @endif
           <span class=" text-uppercase user-name ">{{$LoggedUserInfo['second_name']}} {{$LoggedUserInfo['first_name']}}</span> 
           {{-- <span class="user-role">Administrator</span> --}}

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-{{$employee_add->second_name}} {{$employee_add->first_name}} {{$employee_add->third_name}}
+{{$business_trip->employee_full_name}}
 @endsection
 
 @section('content')
@@ -12,7 +12,9 @@
               <ol class="breadcrumb float-sm-left">
                 <li class="breadcrumb-item"><a href="/">Asosiy</a></li>
                 <li class="breadcrumb-item"><a href="/bussiness-trip/date">Xizmat safari bazasi</a></li>
-                <li class="breadcrumb-item active text-uppercase">{{$employee_add->second_name}} {{$employee_add->first_name}} {{$employee_add->third_name}}</li>
+                <li class="breadcrumb-item active text-uppercase">@foreach ($employee_add as $item)
+                  @if ($item->id == $business_trip->employee_id){{$item->second_name}} {{$item->first_name}} {{$item->third_name}} @endif
+                  @endforeach</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -29,32 +31,56 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-4">
-                    <input type="hidden" value="{{$employee_add->id}}" name="employee_id">
                     <div class="form-group">
                       <label for="employee">Xodim</label>
-                      <input type="text" value="{{$employee_add->second_name}} {{$employee_add->first_name}} {{$employee_add->third_name}}" class="form-control rounded-0" id="employee" disabled>
+                      @foreach ($employee_add as $item)
+                        @if ($item->id == $business_trip->employee_id)
+                        <input type="hidden" value="{{$item->id}}" class="form-control rounded-0" id="employee" name="employee_id">
+                        @endif
+                    @endforeach
+                      @foreach ($employee_add as $item)
+                        @if ($item->id == $business_trip->employee_id)
+                        <input type="text" value="{{$item->second_name}} {{$item->first_name}} {{$item->third_name}}" class="form-control rounded-0" id="employee" disabled>
+                        @endif
+                    @endforeach
                     </div>
                   </div>
                   <div class="col-md-4">
-                    @foreach ($position as $item)
-                        @if ($item->id == $employee_add->position_id)
-                            <input type="hidden" value="{{$item->name}}" name="employee_position">
+                    @foreach ($employee_add as $item)
+                        @if ($item->id == $business_trip->employee_id)
+                            @foreach ($position as $value)
+                                @if ($value->id == $item->position_id)
+                                <input type="hidden" value="{{$value->name}}" name="employee_position">
+                                @endif
+                            @endforeach
                         @endif
                     @endforeach
                     <div class="form-group">
                       <label for="employee_position">Lavozim</label>
-                      @foreach ($position as $item)
-                        @if ($item->id == $employee_add->position_id)
-                      <input type="text" value="{{$item->name}}" class="form-control rounded-0" id="employee_position" disabled>
-                      @endif
-                      @endforeach
+                      @foreach ($employee_add as $item)
+                        @if ($item->id == $business_trip->employee_id)
+                            @foreach ($position as $value)
+                                @if ($value->id == $item->position_id)
+                                <input type="text" value="{{$value->name}}" class="form-control rounded-0" id="employee_position" disabled>
+                                @endif
+                            @endforeach
+                        @endif
+                    @endforeach
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <input type="hidden" value="{{$employee_add->employee_passport}}" class="form-control rounded-0" name="employee_passport">
+                    @foreach ($employee_add as $item)
+                    @if ($item->id == $business_trip->employee_id)
+                    <input type="hidden" value="{{$item->employee_passport}}" class="form-control rounded-0" name="employee_passport">
+                    @endif
+                    @endforeach
                     <div class="form-group">
                       <label for="employee_passport">Passport raqami</label>
-                      <input type="text" value="{{$employee_add->employee_passport}}" class="form-control rounded-0" disabled>
+                      @foreach ($employee_add as $item)
+                    @if ($item->id == $business_trip->employee_id)
+                      <input type="text" value="{{$item->employee_passport}}" class="form-control rounded-0" disabled>
+                      @endif
+                    @endforeach
                     </div>
                   </div>
                 </div>

@@ -24,7 +24,7 @@ class EmployeeController extends Controller
         $search = $request['search'] ?? "" ;
         $system_logo = SystemLogo::all();
         if ($search != "") {
-            $employee = Employee::where('second_name', 'LIKE', "%$search%")->get();
+            $employee = Employee::where('second_name', 'LIKE', "%$search%")->orWhere('employee_id', 'LIKE', "%$search%")->orWhere('employee_passport', 'LIKE', "%$search%")->get();
         } else {
             $employee = DB::table('employees')->orderBy('id','desc')->get();
         }

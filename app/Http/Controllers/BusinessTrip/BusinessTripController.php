@@ -66,8 +66,6 @@ class BusinessTripController extends Controller
             'trip_begin_date'=>'required',
             'trip_end_date'=>'required',
             'employee_passport'=>'required',
-            'order_date'=>'required',
-            'order_number'=>'required',
             'employee_responsible_position'=>'required',
             'employee_responsible_name'=>'required',
             'shipping_adress' => 'required',
@@ -130,6 +128,7 @@ class BusinessTripController extends Controller
         $ministry = iconv('UTF-8','cp1254//TRANSLIT//IGNORE',"O‘ZBEKISTON RESPUBLIKASI OLIY VA O‘RTA MAXSUS");
         $ministry2 = iconv('UTF-8','cp1254//TRANSLIT//IGNORE',"TA’LIM VAZIRLIGI");
         $andmi = iconv('UTF-8','cp1254//TRANSLIT//IGNORE',"ANDIJON MASHINASOZLIK INSTITUTI");
+        $full_name2 = iconv('UTF-8','cp1254//TRANSLIT//IGNORE',$business_trip_pdf->employee_full_name);
 
         $this->fpdf->AddPage('P',  'A4');
         $this->fpdf->SetFont('Times', 'B', 15);
@@ -191,8 +190,13 @@ class BusinessTripController extends Controller
 
         $this->fpdf->Ln( 10 );
         $this->fpdf->SetFont('Times', '', 15);
+        if ($business_trip_pdf->order_number != "") {
         $order_number = iconv('UTF-8','cp1258//TRANSLIT//IGNORE',$business_trip_pdf->order_number);
         $this->fpdf->MultiCell(0, 0, 'Asos: '. $date_order_date. ' dagi ' .$order_number. ' - sonli buyruq '  ,0,'L');
+        }else {
+        $order_number = iconv('UTF-8','cp1258//TRANSLIT//IGNORE',$business_trip_pdf->order_number);
+        $this->fpdf->MultiCell(0, 0, 'Asos: _____________ dagi ______ - sonli buyruq' ,0,'L');
+        }
         // $this->fpdf->Ln( 4 );
         // $this->fpdf->SetFont('Times', 'B', 10);
         // $this->fpdf->MultiCell(0, 0, "",1,'L');
@@ -305,13 +309,13 @@ class BusinessTripController extends Controller
 
         $this->fpdf->MultiCell(0, 0, 'muhofaza qilish vazirligining 2003 yil 24 iyuldagi 83-son va 7/12-sonli qarori bilan tasdiqlangan' ,0,'B');
 
-        $this->fpdf->Output('D',"$fullname.pdf");
+        $this->fpdf->Output('D',"$full_name2.pdf");
 
         exit;
     }
     public function business_trip_edit($id)
     {
-        $employee_add = Employee::find($id);
+        $employee_add = Employee::all();
         $system_logo = SystemLogo::all();
         $position = Position::all();
         $business_trip = BusinessTrip::find($id);
@@ -321,16 +325,14 @@ class BusinessTripController extends Controller
     public function business_trip_update(Request $request,$id)
     {
         $request->validate([
-            'employee_id'=>'required',
-            'employee_position'=>'required',
+            // 'employee_id'=>'required',
+            // 'employee_position'=>'required',
             'trip_adress'=>'required',
             'trip_day'=>'required',
             'trip_days'=>'required',
             'trip_begin_date'=>'required',
             'trip_end_date'=>'required',
-            'employee_passport'=>'required',
-            'order_date'=>'required',
-            'order_number'=>'required',
+            // 'employee_passport'=>'required',
             'employee_responsible_position'=>'required',
             'employee_responsible_name'=>'required',
             'shipping_adress' => 'required',

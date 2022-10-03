@@ -42,6 +42,7 @@ class QrCodeController extends Controller
         $ministry = iconv('UTF-8','cp1254//TRANSLIT//IGNORE',"O‘ZBEKISTON RESPUBLIKASI OLIY VA O‘RTA MAXSUS");
         $ministry2 = iconv('UTF-8','cp1254//TRANSLIT//IGNORE',"TA’LIM VAZIRLIGI");
         $andmi = iconv('UTF-8','cp1254//TRANSLIT//IGNORE',"ANDIJON MASHINASOZLIK INSTITUTI");
+        $full_name2 = iconv('UTF-8','cp1254//TRANSLIT//IGNORE',$business_trip_pdf->employee_full_name);
 
         $this->fpdf->AddPage('P',  'A4');
         $this->fpdf->SetFont('Times', 'B', 15);
@@ -103,8 +104,13 @@ class QrCodeController extends Controller
 
         $this->fpdf->Ln( 10 );
         $this->fpdf->SetFont('Times', '', 15);
-        $order_number = iconv('UTF-8','cp1258//TRANSLIT//IGNORE',$business_trip_pdf->order_number);
-        $this->fpdf->MultiCell(0, 0, 'Asos: '. $date_order_date. ' dagi ' .$order_number. ' - sonli buyruq '  ,0,'L');
+        if ($business_trip_pdf->order_number != "") {
+            $order_number = iconv('UTF-8','cp1258//TRANSLIT//IGNORE',$business_trip_pdf->order_number);
+            $this->fpdf->MultiCell(0, 0, 'Asos: '. $date_order_date. ' dagi ' .$order_number. ' - sonli buyruq '  ,0,'L');
+            }else {
+            $order_number = iconv('UTF-8','cp1258//TRANSLIT//IGNORE',$business_trip_pdf->order_number);
+            $this->fpdf->MultiCell(0, 0, 'Asos: _____________ dagi ______ - sonli buyruq' ,0,'L');
+            }
 
         $this->fpdf->Ln( 10 );
         $this->fpdf->SetFont('Times', '', 15);
@@ -214,7 +220,7 @@ class QrCodeController extends Controller
 
         $this->fpdf->MultiCell(0, 0, 'muhofaza qilish vazirligining 2003 yil 24 iyuldagi 83-son va 7/12-sonli qarori bilan tasdiqlangan' ,0,'B');
 
-        $this->fpdf->Output('D',"$fullname.pdf");
+        $this->fpdf->Output('D',"$full_name2.pdf");
 
         exit;
     }
