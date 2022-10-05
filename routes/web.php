@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BusinessTrip\BusinessTripController;
+use App\Http\Controllers\Curriculum\EducationYearController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\RegisterController;
 use App\Http\Controllers\Dashboard\AdminController;
@@ -147,6 +148,19 @@ Route::get('/bussiness-trip/date-search', 'business_trip');
 });
     
 // Business Trip END
+
+// Education-Year
+
+Route::controller(EducationYearController::class)->group(function () {
+
+Route::get('/curriculum/education-year',  'education_year');
+Route::post('/curriculum/education-year/save',  'education_year_save');
+Route::get('/curriculum/education-year/edit/{id}',  'education_year_edit');
+Route::post('/curriculum/education-year/update/{id}',  'education_year_update');
+
+});
+// END Education-Year
+
 
 // Business Trip ROUTE
 

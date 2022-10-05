@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Helpers;
+use App\Models\Curriculum\EducationYear;
 
 class Helper{
     public static function IDGenerator($model, $throw, $length = 5 , $prefix)
@@ -23,8 +24,7 @@ class Helper{
         }
         return $prefix. $zeros . $last_number;
     }
-
-    public static function Business_trip_id($model, $throw, $length = 5 , $prefix)
+    function Business_trip_id($model, $throw, $length = 5 , $prefix)
     {
         $last_number = '';
         $data = $model::orderBy('id', 'desc')->first();

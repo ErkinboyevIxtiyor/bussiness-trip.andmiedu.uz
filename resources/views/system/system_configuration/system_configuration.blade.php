@@ -120,9 +120,9 @@ Tizim sozlamalari
                       </ul>
                     </div>
                     <!-- /.card-body -->
-                  </div>
+                  </div> --}}
 
-              </div> --}}
+              </div>
         </div>
     </section>
     <!-- /.content -->

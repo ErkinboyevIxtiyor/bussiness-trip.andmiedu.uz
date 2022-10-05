@@ -85,6 +85,24 @@
             </ul>
           </li>
 
+          <li class="nav-item">
+            <a href="#" class="nav-link rounded-0">
+              <i class="fa-solid fa-book"></i>
+              <p>
+                O‘quv yili
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/curriculum/education-year" class="nav-link rounded-0">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>O‘quv yili</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           {{-- <li class="nav-item ">
             <a href="#" class="nav-link rounded-0">
               <i class="fa-solid fa-chart-column"></i>

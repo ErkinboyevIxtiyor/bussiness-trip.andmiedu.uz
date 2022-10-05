@@ -34,6 +34,7 @@ class CreateBusinessTripsTable extends Migration
             $table->string('qr_code')->nullable();
             $table->string('arrival_adress', 1000)-> nullable();
             $table->date('arrival_date')-> nullable();
+            $table->string('statistical',255)->nullable();
             $table->boolean('status')->default(true);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();

@@ -73,7 +73,7 @@ class BusinessTripController extends Controller
         ]);
         // $input = $request->all();
         // return dd($input);
-        $trip_id = Helper::Business_trip_id(new BusinessTrip, 'trip_id',3, date('m').'/');
+        $trip_id = Helper::Business_trip_id(new BusinessTrip, 'trip_id',3, date('y').'/');
         $business_trip = new BusinessTrip;
         $business_trip->trip_id= $trip_id;
         $business_trip->employee_id= $request->employee_id;

@@ -20,7 +20,6 @@
 </head>
 <body class="hold-transition login-page">
 <div class="login-box " style="width: 450px">
-  <!-- /.login-logo -->
   <div class="card card-outline card-primary p-1 rounded-0">
     <div class=" text-center mt-2">
       @foreach ($system_logo as $item)
@@ -35,11 +34,7 @@
                 @csrf
               <div class="input-group">
                 <input type="email" class="form-control rounded-0" placeholder="Email" name="email" value="{{old('email')}}">
-                <div class="input-group-append">
-                  {{-- <div class="input-group-text">
-                    <span class="fas fa-envelope"></span>
-                  </div> --}}
-                </div>
+                
               </div>
               <div class="d-flex justify-content-end mb-3">
                 <span class="text-danger">@error('email')
@@ -48,11 +43,7 @@
             </div>
               <div class="input-group">
                 <input type="password" class="form-control rounded-0" placeholder="Parol" name="password">
-                <div class="input-group-append">
-                  {{-- <div class="input-group-text">
-                    <span class="fas fa-lock"></span>
-                  </div> --}}
-                </div>
+                
               </div>
               <div class="d-flex justify-content-end mb-3">
                 <span class="text-danger">@error('password')
@@ -68,21 +59,17 @@
                     </label>
                   </div>
                 </div>
-                <!-- /.col -->
                 <div class="col-4">
                   <button type="submit" class="btn btn-primary btn-block btn-flat text-start">Kirish</button>
                 </div>
-                <!-- /.col -->
               </div>
             </form>
           </div>
     </div>
     <!-- /.card-body -->
   </div>
-  <!-- /.card -->
 </div>
 <!-- /.login-box -->
-
 <!-- jQuery -->
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
