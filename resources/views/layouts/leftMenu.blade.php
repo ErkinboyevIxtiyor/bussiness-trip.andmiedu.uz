@@ -85,7 +85,7 @@
             </ul>
           </li>
 
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="#" class="nav-link rounded-0">
               <i class="fa-solid fa-book"></i>
               <p>
@@ -101,9 +101,9 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> --}}
 
-          {{-- <li class="nav-item ">
+          <li class="nav-item ">
             <a href="#" class="nav-link rounded-0">
               <i class="fa-solid fa-chart-column"></i>
               <p>
@@ -119,7 +119,7 @@
                 </a>
               </li>
             </ul>
-          </li> --}}
+          </li>
           <li class="nav-item">
             <a href="#" class="nav-link rounded-0">
               <i class="fa-solid fa-gear"></i>

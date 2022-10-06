@@ -193,9 +193,9 @@ class QrCodeController extends Controller
 
         $this->fpdf->Ln( 5 );
         $this->fpdf->SetFont('Times', '', 13);
-        $first_str = iconv('UTF-8','cp1254//TRANSLIT//IGNORE','Bir necha yo‘nalishlarga safarga borilganda ularning har birida alohida keldi va chiqdi belgilanishlari');
+        $first_str = iconv('UTF-8','cp1254//TRANSLIT//IGNORE','Bir necha yo‘nalishlarga safarga borilganda ularning har birida keldi va chiqdi belgilanishlari alohida');
 
-        $second_str = iconv('UTF-8','cp1254//TRANSLIT//IGNORE','alohida amalga oshiriladi hamda guvohnoma safardan qaygandan so‘ng 3 (uch) kun ichida');
+        $second_str = iconv('UTF-8','cp1254//TRANSLIT//IGNORE','amalga oshiriladi hamda guvohnoma safardan qaytgandan so‘ng 3 (uch) kun ichida buxgalteriyaga');
 
         $this->fpdf->MultiCell(0, 0, $first_str ,0,'B');
 

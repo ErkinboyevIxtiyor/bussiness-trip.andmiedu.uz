@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Xodimlar bazasi
+Statistika
 @endsection
 
 @section('content')
@@ -33,21 +33,20 @@ Xodimlar bazasi
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($employee as $item)
-                            @foreach ($business_trip as $trip)
-                            @if ($trip->employee_id == $item->id)
-                            @if ($item->status == 1)
-                            <tr>
-                              <td class=" text-uppercase ">{{$item->second_name}} {{$item->first_name}} {{$item->third_name}}</td>
-                              @if ($trip->employee_id == $item->id)
-                              <td class="text-center"><a href="">{{$business_trip_statistical}}</a>
-                              </td>
-                              @endif
-                            </tr> 
-                            @endif
-                            @endif
-                            @endforeach
-                            @endforeach
+                                @foreach ($employee as $item)
+                                        <tr>
+                                              <td>{{$item->second_name}}</td>
+                                              <td>
+                                                <a href="">
+                                                  @foreach ($business_trip as $value)
+                                                  @if ($item->id == $value->employee_id)
+                                                      {{$value->statistical}}
+                                                  @endif
+                                              @endforeach
+                                            </a>
+                                            </td>
+                                        </tr>
+                                @endforeach
                         </tbody>
                     </table>
                 </div>

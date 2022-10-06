@@ -74,8 +74,10 @@ class BusinessTripController extends Controller
         // $input = $request->all();
         // return dd($input);
         $trip_id = Helper::Business_trip_id(new BusinessTrip, 'trip_id',3, date('y').'/');
+        $statistical = 1;
         $business_trip = new BusinessTrip;
         $business_trip->trip_id= $trip_id;
+        $business_trip->statistical= $statistical;
         $business_trip->employee_id= $request->employee_id;
         $business_trip->employee_full_name= $request->employee_full_name;
         $business_trip->employee_position= $request->employee_position;
@@ -282,9 +284,9 @@ class BusinessTripController extends Controller
 
         $this->fpdf->Ln( 5 );
         $this->fpdf->SetFont('Times', '', 13);
-        $first_str = iconv('UTF-8','cp1254//TRANSLIT//IGNORE','Bir necha yo‘nalishlarga safarga borilganda ularning har birida alohida keldi va chiqdi belgilanishlari');
+        $first_str = iconv('UTF-8','cp1254//TRANSLIT//IGNORE','Bir necha yo‘nalishlarga safarga borilganda ularning har birida keldi va chiqdi belgilanishlari alohida');
 
-        $second_str = iconv('UTF-8','cp1254//TRANSLIT//IGNORE','alohida amalga oshiriladi hamda guvohnoma safardan qaygandan so‘ng 3 (uch) kun ichida');
+        $second_str = iconv('UTF-8','cp1254//TRANSLIT//IGNORE','amalga oshiriladi hamda guvohnoma safardan qaytgandan so‘ng 3 (uch) kun ichida buxgalteriyaga');
 
         $this->fpdf->MultiCell(0, 0, $first_str ,0,'B');
 
@@ -294,7 +296,7 @@ class BusinessTripController extends Controller
 
         $this->fpdf->Ln( 5 );
 
-        $this->fpdf->MultiCell(0, 0, 'buxgalteriyaga hisobot bilan topshiriladi.' ,0,'B');
+        $this->fpdf->MultiCell(0, 0, ' hisobot bilan topshiriladi.' ,0,'B');
 
         $this->fpdf->Ln( 8 );
         $this->fpdf->SetFont('Times', 'B', 13);

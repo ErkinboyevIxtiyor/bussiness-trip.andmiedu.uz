@@ -52,7 +52,7 @@
                           @foreach ($admin_data as $item)
                           <tr>
                             <th>{{$item->admin_id}}</th>
-                            <td class="text-uppercase"><a href="/system/admin-edit/{{$item->id}}">{{$item->first_name}} {{$item->second_name}} {{$item->third_name}}</a></td>
+                            <td class="text-uppercase"><a href="/system/admin-edit/{{$item->id}}">{{$item->second_name}} {{$item->first_name}}  {{$item->third_name}}</a></td>
                             <td>ADMINISTRATOR</td>
                             <td>{{$item->email}}</td>
                             <td>{{ date('d-m-Y H:i:s', strtotime($item->created_at))}}</td>

@@ -20,9 +20,7 @@ class StatisticalController extends Controller
         $employees_count = Employee::all()->count();
         $position = Position::all();
         $business_trip = BusinessTrip::all();
-        foreach ($employee as $value) {
-            $business_trip_statistical = BusinessTrip::where('employee_id', '=' ,$value->id)->count();
-        }
+        $business_trip_statistical = BusinessTrip::where('statistical', '1')->count();
         // $business_trip_statistical = BusinessTrip::where('status','1')->count();
         $data = ['LoggedUserInfo'=>SystemAdmin::where('id','=',session('LoggedUser'))->first()];
         // //$data = SystemAdmin::find(Auth::id());
@@ -38,6 +36,6 @@ class StatisticalController extends Controller
         //     }
         // }
         // dd($employee_info);
-        return view('statistical.statistical',$data,compact('system_logo','employee','position','business_trip','business_trip_statistical'));
+        return view('statistical.statistical',$data,compact('system_logo','employee','position','business_trip','business_trip_statistical',));
     }
 }
