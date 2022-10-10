@@ -14,9 +14,10 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
        <!-- SweetAlert2 -->
-       <link rel="stylesheet" href="{{asset('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
-       <!-- Toastr -->
-       <link rel="stylesheet" href="{{asset('plugins/toastr/toastr.min.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="{{asset('plugins/toastr/toastr.min.css')}}">
+  <link href="{{asset('\system\logo\logo.png')}}" rel="icon" type="img/png">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box " style="width: 450px">

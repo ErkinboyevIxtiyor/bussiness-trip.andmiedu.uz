@@ -53,10 +53,15 @@ class EmployeeController extends Controller
             'position_id'=>'required',
         ]);
         $employee_id = Helper::IDGenerator(new Employee, 'employee_id',4, '303'.date('ym'));
+        $position_name = $request->position_id;
+        $position = Position::find($position_name);
+        $position_name_save = $position->name;
+        // dd($position_name2);
         // return dd ($employee_id);
         $employee = new Employee;
         $employee->employee_id= $employee_id;
         $employee->position_id= $request->position_id;
+        $employee->employee_position= $position_name_save;
         $employee->second_name= $request->second_name;
         $employee->first_name= $request->first_name;
         $employee->third_name= $request->third_name;
@@ -125,7 +130,11 @@ class EmployeeController extends Controller
             'position_id'=>'required',
         ]);
         $employee = Employee::find($id);
+        $position_name = $request->position_id;
+        $position = Position::find($position_name);
+        $position_name_save = $position->name;
         $employee->position_id= $request->position_id;
+        $employee->employee_position= $position_name_save;
         $employee->second_name= $request->second_name;
         $employee->first_name= $request->first_name;
         $employee->third_name= $request->third_name;

@@ -169,7 +169,7 @@
                 </div>
               </div>
               <div class="bg-info">
-                <h3 class="ml-1">Tastuqlovchi Ma‘sul xodim</h3>
+                <h3 class="ml-1">Tastiqlovchi ma‘sul xodim</h3>
               </div>
               <div class="card-body">
                 <div class="row">

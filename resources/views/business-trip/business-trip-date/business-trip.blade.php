@@ -48,7 +48,8 @@ Xizmat safari bazasi
                     <th class="text-center">Passport raqami</th>
                     <th class="text-center">O‘zgartirilgan</th>
                     <th class="text-center">Yuklab olish</th>
-                    <th >Holadi</th>
+                    <th >Faol</th>
+                    <th >Kelgan</th>
                    </tr>
                 </thead>
                 <tbody>
@@ -73,6 +74,13 @@ Xizmat safari bazasi
                       <a href="/bussiness/unpublished/{{$item->id}}" type="button"><i class=" text-success  fa-regular fa-square-check" style="font-size: 25px"></i></a>
                       @else
                       <a href="/bussiness/published/{{$item->id}}" type="button"><i class=" text-danger fa-solid fa-xmark" style="font-size: 25px"></i></a>
+                      @endif
+                    </td>
+                    <td>
+                      @if ($item->arrival_adress == "")
+                      <a href="/bussiness-trip/date/edit/{{$item->id}}" class="btn btn-flat btn-light border border-2 text-danger" type="button">Jo‘nagan</a>
+                      @else
+                      <a href="/bussiness-trip/date/edit/{{$item->id}}" class="btn btn-flat btn-light border border-2 text-success" type="button">Kelgan</a>
                       @endif
                     </td>
                   </tr>

@@ -64,7 +64,7 @@
   @livewireStyles
 
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed sidebar-mini modal-open" style="height: auto; padding-right: 17px;">
 <div class="wrapper">
 
   <!-- Preloader -->

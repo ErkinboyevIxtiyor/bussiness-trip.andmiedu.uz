@@ -75,6 +75,9 @@ class BusinessTripController extends Controller
         // return dd($input);
         $trip_id = Helper::Business_trip_id(new BusinessTrip, 'trip_id',3, date('y').'/');
         $statistical = 1;
+        $trip_days = $request->trip_days;
+        $trip_day = $request->trip_day;
+        $result = $trip_days ." ". $trip_day;
         $business_trip = new BusinessTrip;
         $business_trip->trip_id= $trip_id;
         $business_trip->statistical= $statistical;
@@ -82,6 +85,7 @@ class BusinessTripController extends Controller
         $business_trip->employee_full_name= $request->employee_full_name;
         $business_trip->employee_position= $request->employee_position;
         $business_trip->trip_adress= $request->trip_adress;
+        $business_trip->trip_day_all= $result;
         $business_trip->trip_days= $request->trip_days;
         $business_trip->trip_day= $request->trip_day;
         $business_trip->trip_begin_date= $request->trip_begin_date;
@@ -342,9 +346,13 @@ class BusinessTripController extends Controller
         ]);
 
         $business_trip = BusinessTrip::find($id);
+        $trip_days = $request->trip_days;
+        $trip_day = $request->trip_day;
+        $result = $trip_days ." ". $trip_day;
         $business_trip->employee_id= $request->employee_id;
         $business_trip->employee_position= $request->employee_position;
         $business_trip->trip_adress= $request->trip_adress;
+        $business_trip->trip_day_all= $result;
         $business_trip->trip_days= $request->trip_days;
         $business_trip->trip_day= $request->trip_day;
         $business_trip->trip_begin_date= $request->trip_begin_date;
@@ -377,5 +385,27 @@ class BusinessTripController extends Controller
     {
         $date = date('d-m-Y-H-i-s');
         return Excel::download(new BusinessTripExport, "$date-xizmat_safari.xlsx");
+    }
+    public function business_trip_date_save(Request $request,$id)
+    {
+        $request->validate([
+            'arrival_date'=>'required',
+        ]);
+        $trip = BusinessTrip::find($id);
+        $arrival_adress = 'Andijon shahar';
+        $trip->arrival_adress= $arrival_adress;
+        $trip->arrival_date= $request->arrival_date;
+        $save = $trip->save();
+        if ($save) {
+            return redirect('/bussiness-trip/date')->with('save','Maʼlumot muvaffaqiyatli saqlandi');
+        }
+    }
+    public function business_trip_edit_save(Request $request,$id)
+    {
+        $system_logo = SystemLogo::all();
+        $position = Position::all();
+        $business_trip = BusinessTrip::find($id);
+        $data = ['LoggedUserInfo'=>SystemAdmin::where('id','=',session('LoggedUser'))->first()];
+        return view('business-trip.business-trip-edit.business-trip',$data,compact('system_logo','business_trip'));
     }
 }

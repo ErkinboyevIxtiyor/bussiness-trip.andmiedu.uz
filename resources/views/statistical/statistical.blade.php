@@ -11,7 +11,7 @@ Statistika
             <div class="col-sm-12">
               <ol class="breadcrumb float-sm-left">
                 <li class="breadcrumb-item"><a href="/">Asosiy</a></li>
-                <li class="breadcrumb-item active">Xodimlar bazasi</li>
+                <li class="breadcrumb-item active">Statistika</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -34,18 +34,16 @@ Statistika
                         </thead>
                         <tbody>
                                 @foreach ($employee as $item)
-                                        <tr>
-                                              <td>{{$item->second_name}}</td>
-                                              <td>
-                                                <a href="">
-                                                  @foreach ($business_trip as $value)
-                                                  @if ($item->id == $value->employee_id)
-                                                      {{$value->statistical}}
-                                                  @endif
-                                              @endforeach
-                                            </a>
-                                            </td>
-                                        </tr>
+                                    @foreach ($employee_info as $v=>$value)
+                                        @if ($v == $item->id)
+                                            <tr>
+                                              <td class=" text-uppercase ">
+                                                {{$item->second_name}} {{$item->first_name}} {{$item->third_name}}
+                                              </td>
+                                              <td>{{$value}}</td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
                                 @endforeach
                         </tbody>
                     </table>

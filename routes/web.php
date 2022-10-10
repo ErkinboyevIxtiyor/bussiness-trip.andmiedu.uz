@@ -145,6 +145,8 @@ Route::post('/bussiness-trip/update/{id}',  'business_trip_update');
 Route::get('/bussiness/unpublished/{id}', 'faculty_unpublished');
 Route::get('/bussiness/published/{id}', 'faculty_published');
 Route::get('/bussiness-trip/date-search', 'business_trip');
+Route::post('/bussiness-trip/date/{id}',  'business_trip_date_save');
+Route::get('/bussiness-trip/date/edit/{id}', 'business_trip_edit_save');
 });
     
 // Business Trip END

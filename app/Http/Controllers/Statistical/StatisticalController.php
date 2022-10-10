@@ -21,21 +21,22 @@ class StatisticalController extends Controller
         $position = Position::all();
         $business_trip = BusinessTrip::all();
         $business_trip_statistical = BusinessTrip::where('statistical', '1')->count();
+        //dd($business_trip_statistical);
         // $business_trip_statistical = BusinessTrip::where('status','1')->count();
         $data = ['LoggedUserInfo'=>SystemAdmin::where('id','=',session('LoggedUser'))->first()];
-        // //$data = SystemAdmin::find(Auth::id());
-        // $employee_info = array();
-        // foreach ($employee as $value) {
-        //     $employee_info[$value->id] = 0;
-        // }
-        // //dd($employee_info);
-        // if($business_trip){
-        //     foreach ($business_trip as $value) {
-        //         $business_trip_count = BusinessTrip::where('status','1')->where('employee_id',$value->id)->count();
-        //         $employee_info[$value->id] = $business_trip_count;
-        //     }
-        // }
-        // dd($employee_info);
-        return view('statistical.statistical',$data,compact('system_logo','employee','position','business_trip','business_trip_statistical',));
+        //$data = SystemAdmin::find(Auth::id());
+        $employee_info = array();
+        foreach ($employee as $value) {
+            $employee_info[$value->id] = 0;
+        }
+        //dd($employee_info);
+        if($business_trip){
+            foreach ($business_trip as $value) {
+                $business_trip_count = BusinessTrip::where('status','1')->where('employee_id',$value->employee_id)->count();
+                $employee_info[$value->employee_id] = $business_trip_count;
+            }
+        }
+        $employee_info;
+        return view('statistical.statistical',$data,compact('system_logo','employee','position','business_trip','business_trip_statistical','employee_info'));
     }
 }
